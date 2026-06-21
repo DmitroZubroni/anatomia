@@ -474,37 +474,44 @@ input[type=checkbox] { accent-color:var(--accent2); width:17px; height:17px; cur
 .gen-progress-fill { height:4px; background:var(--accent); border-radius:2px; transition:width .3s; }
 @keyframes spin { to { transform:rotate(360deg); } }
 .quiz-empty { text-align:center; padding:40px; color:var(--text-muted); font-size:14px; }
-.retry-btn { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:8px 16px; color:var(--text); font-size:13px; cursor:pointer; margin-top:12px; }
-.retry-btn:hover { border-color:var(--accent); }
+.quiz-sec-header {
+  display:flex;
+  align-items:center;
+  padding:10px 0 8px;
+  margin:18px 0 10px;
+  border-bottom:1px solid var(--border);
+}
+.quiz-sec-header:first-child { margin-top:0; }
 
 
 /* ── CONFIDENCE BUTTONS ─────────────────── */
 .conf-row {
-  margin-top:16px;
-  display:flex;
+  margin-top:14px;
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
   gap:8px;
-  flex-wrap:wrap;
 }
 .conf-btn {
-  flex:1; min-width:80px;
-  padding:9px 6px;
-  border-radius:10px;
-  font-size:12.5px;
+  padding:10px 4px;
+  border-radius:8px;
+  font-size:12px;
   font-weight:700;
+  letter-spacing:.03em;
+  text-transform:uppercase;
   cursor:pointer;
-  border:1.5px solid var(--border);
+  border:2px solid var(--border);
   background:var(--surface2);
-  color:var(--text-muted);
+  color:var(--text-dim);
   transition:all .15s;
   text-align:center;
 }
-.conf-btn:hover { filter:brightness(1.2); }
-.conf-btn.know   { border-color:#3fb950; color:#3fb950; }
-.conf-btn.unsure { border-color:#e3b341; color:#e3b341; }
-.conf-btn.noknow { border-color:#f85149; color:#f85149; }
-.conf-btn.active-know   { background:rgba(63,185,80,.18);  border-color:#3fb950; color:#3fb950; }
-.conf-btn.active-unsure { background:rgba(227,179,65,.18); border-color:#e3b341; color:#e3b341; }
-.conf-btn.active-noknow { background:rgba(248,81,73,.18);  border-color:#f85149; color:#f85149; }
+.conf-btn:hover:not(.active-know):not(.active-unsure):not(.active-noknow) {
+  border-color:var(--text-muted);
+  color:var(--text);
+}
+.conf-btn.active-know   { background:#1a3a22; border-color:#3fb950; color:#3fb950; }
+.conf-btn.active-unsure { background:#3a2f0a; border-color:#e3b341; color:#e3b341; }
+.conf-btn.active-noknow { background:#3a1212; border-color:#f85149; color:#f85149; }
 
 /* Q-item confidence dots */
 .q-item.know   .q-dot { background:#3fb950; }
@@ -559,6 +566,207 @@ input[type=checkbox] { accent-color:var(--accent2); width:17px; height:17px; cur
 .sec-mini-fill.medium { background:var(--accent); }
 .sec-mini-fill.low    { background:var(--accent5); }
 
+
+/* ── QUIZ TOP BAR ─────────────────────── */
+.quiz-topbar {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+  flex-wrap:wrap;
+}
+.quiz-section-sel {
+  display:flex;
+  gap:8px;
+  flex:1;
+  min-width:0;
+}
+.quiz-section-sel select {
+  flex:1;
+  min-width:120px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  color:var(--text);
+  padding:8px 10px;
+  font-size:13px;
+}
+.btn-start-quiz {
+  background:var(--accent);
+  color:#000;
+  border:none;
+  border-radius:8px;
+  padding:8px 16px;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.btn-start-quiz:hover { opacity:.88; }
+.btn-stats {
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:8px 14px;
+  font-size:13px;
+  color:var(--text);
+  cursor:pointer;
+  white-space:nowrap;
+  font-weight:600;
+}
+.btn-stats:hover { border-color:var(--accent); }
+
+/* ── STATS PANEL ─────────────────────── */
+.stats-topbar {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:22px;
+}
+.btn-back-quiz {
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:7px 13px;
+  font-size:13px;
+  color:var(--text);
+  cursor:pointer;
+}
+.btn-back-quiz:hover { border-color:var(--accent); }
+.stats-block {
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px 20px;
+  margin-bottom:16px;
+}
+.stats-block-title {
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  color:var(--text-muted);
+  margin-bottom:14px;
+}
+.stats-score-row {
+  display:flex;
+  gap:0;
+}
+.stats-score-cell {
+  flex:1;
+  text-align:center;
+}
+.stats-big-num {
+  font-size:32px;
+  font-weight:800;
+  line-height:1;
+  margin-bottom:4px;
+}
+.stats-label {
+  font-size:11px;
+  color:var(--text-muted);
+}
+.stats-legend {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.leg {
+  font-size:11px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.leg::before {
+  content:'';
+  display:inline-block;
+  width:10px;
+  height:10px;
+  border-radius:2px;
+}
+.leg.know::before   { background:#3fb950; }
+.leg.unsure::before { background:#e3b341; }
+.leg.noknow::before { background:#f85149; }
+.leg.none::before   { background:var(--border); }
+.stats-sec-row {
+  margin-bottom:13px;
+}
+.stats-sec-name {
+  font-size:12px;
+  color:var(--text-muted);
+  font-weight:600;
+  margin-bottom:4px;
+  display:flex;
+  justify-content:space-between;
+}
+.stats-seg-bar {
+  width:100%;
+  height:10px;
+  background:var(--border);
+  border-radius:5px;
+  overflow:hidden;
+  display:flex;
+}
+.stats-seg-bar div { transition:width .5s; }
+.stats-counts {
+  display:flex;
+  gap:10px;
+  margin-top:3px;
+  font-size:10.5px;
+  color:var(--text-dim);
+}
+
+
+/* ── QUIZ RESULT BAR ──────────────────── */
+.quiz-result-bar {
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px 18px;
+  margin-bottom:16px;
+}
+.qrb-scores {
+  display:flex;
+  gap:0;
+  margin-bottom:14px;
+}
+.qrb-cell {
+  flex:1;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.qrb-num  { font-size:28px; font-weight:800; line-height:1; }
+.qrb-lbl  { font-size:11px; color:var(--text-muted); }
+.qrb-actions {
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+.qrb-btn {
+  flex:1;
+  min-width:80px;
+  padding:8px 6px;
+  border-radius:8px;
+  border:1.5px solid var(--border);
+  background:var(--surface);
+  color:var(--text-muted);
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  text-align:center;
+  transition:all .15s;
+}
+.qrb-btn:hover  { border-color:var(--accent); color:var(--text); }
+.qrb-btn.active { border-color:var(--accent); background:rgba(88,166,255,.1); color:var(--text); }
+.qrb-btn.restart { border-color:#e3b341; color:#e3b341; flex:0 0 auto; }
+.qrb-btn.restart:hover { background:rgba(227,179,65,.1); }
+.qcard.hidden-by-filter { display:none; }
+.quiz-sec-header.hidden-by-filter { display:none; }
+
 </style>
 </head>
 <body>
@@ -582,6 +790,7 @@ input[type=checkbox] { accent-color:var(--accent2); width:17px; height:17px; cur
   <div class="tab active" onclick="switchTab('questions')">📚 Вопросы</div>
   <div class="tab"        onclick="switchTab('tasks')">🔬 Задачи</div>
   <div class="tab"        onclick="switchTab('quiz')">🧪 Тесты</div>
+  <div class="tab"        onclick="switchTab('stats')" id="tabStats">📊 Стат.</div>
 </div>
 
 <!-- OVERLAY -->
@@ -618,7 +827,7 @@ input[type=checkbox] { accent-color:var(--accent2); width:17px; height:17px; cur
       </div>
       <div id="sectionProgressList" style="margin-bottom:14px"></div>
       <div class="tip-box">
-        <strong>💡 Отмечай уверенность:</strong> После каждого ответа жми ❌ Не знаю / 🤔 Сомневаюсь / ✅ Знаю — система покажет пробелы по разделам.
+        <strong>💡 Отмечай уверенность:</strong> После ответа нажми одну из трёх кнопок — «Знаю», «Сомневаюсь» или «Не знаю». Цветная полоска по каждому разделу покажет пробелы.
       </div>
     </div>
   </div>
@@ -641,9 +850,9 @@ input[type=checkbox] { accent-color:var(--accent2); width:17px; height:17px; cur
         <div class="answer-body empty" id="ansBody">Нажми «Показать ответ»</div>
       </div>
       <div class="conf-row" id="confRow">
-        <button class="conf-btn noknow" onclick="setConf('noknow')">❌ Не знаю</button>
-        <button class="conf-btn unsure" onclick="setConf('unsure')">🤔 Сомневаюсь</button>
-        <button class="conf-btn know"   onclick="setConf('know')">✅ Знаю</button>
+        <button class="conf-btn noknow" onclick="setConf('noknow')">Не знаю</button>
+        <button class="conf-btn unsure" onclick="setConf('unsure')">Сомневаюсь</button>
+        <button class="conf-btn know"   onclick="setConf('know')">Знаю</button>
       </div>
     </div>
   </div>
@@ -651,22 +860,76 @@ input[type=checkbox] { accent-color:var(--accent2); width:17px; height:17px; cur
   <!-- QUIZ PANEL -->
   <div class="panel" id="quizPanel">
     <div class="quiz-wrap">
-      <div class="quiz-header">
-        <h2>🧪 Тестирование</h2>
-        <span class="quiz-meta" id="quizMeta"></span>
+      <div class="quiz-topbar">
+        <div class="quiz-section-sel">
+          <select id="quizSecSel">
+            <option value="all">Все разделы</option>
+          </select>
+          <button class="btn-start-quiz" onclick="startQuiz()">▶ Начать тест</button>
+        </div>
+        <button class="btn-stats" onclick="switchTab('stats')">📊 Статистика</button>
       </div>
-      <div class="quiz-section-sel">
-        <select id="quizSecSel">
-          <option value="all">Все разделы</option>
-        </select>
-        <button onclick="startQuiz()">▶ Начать тест</button>
-      </div>
-      <div id="quizScoreBar" style="display:none" class="quiz-score-bar">
-        <div><div class="score-num" id="quizScoreNum">0</div><div class="score-lbl">правильных</div></div>
-        <div><div class="score-num" id="quizWrongNum" style="color:#f85149">0</div><div class="score-lbl">ошибок</div></div>
-        <div class="score-pct" id="quizPct"></div>
+      <div id="quizResultBar" style="display:none" class="quiz-result-bar">
+        <div class="qrb-scores">
+          <div class="qrb-cell"><span class="qrb-num" id="qrbCorrect" style="color:#3fb950">0</span><span class="qrb-lbl">верно</span></div>
+          <div class="qrb-cell"><span class="qrb-num" id="qrbWrong"   style="color:#f85149">0</span><span class="qrb-lbl">ошибок</span></div>
+          <div class="qrb-cell"><span class="qrb-num" id="qrbPct"     style="color:var(--accent)">—</span><span class="qrb-lbl">% верных</span></div>
+        </div>
+        <div class="qrb-actions">
+          <button class="qrb-btn active" id="btnShowAll"      onclick="filterQuiz('all')">Все вопросы</button>
+          <button class="qrb-btn"        id="btnShowWrong"    onclick="filterQuiz('wrong')">❌ Ошибки</button>
+          <button class="qrb-btn"        id="btnShowCorrect"  onclick="filterQuiz('correct')">✅ Верные</button>
+          <button class="qrb-btn restart" onclick="startQuiz()">↺ Заново</button>
+        </div>
       </div>
       <div id="quizContent"><div class="quiz-empty">Выбери раздел и нажми «Начать тест»</div></div>
+    </div>
+  </div>
+
+  <!-- STATS PANEL -->
+  <div class="panel" id="statsPanel">
+    <div class="quiz-wrap">
+      <div class="stats-topbar">
+        <button class="btn-back-quiz" onclick="switchTab('quiz')">← Назад к тестам</button>
+        <h2 style="margin:0;font-size:17px;font-weight:700">📊 Статистика</h2>
+      </div>
+
+      <!-- Test results -->
+      <div class="stats-block" id="statsTestBlock">
+        <div class="stats-block-title">Результаты тестов</div>
+        <div id="statsTestScoreRow" class="stats-score-row">
+          <div class="stats-score-cell">
+            <div class="stats-big-num" id="stCorrect" style="color:#3fb950">0</div>
+            <div class="stats-label">правильно</div>
+          </div>
+          <div class="stats-score-cell">
+            <div class="stats-big-num" id="stWrong" style="color:#f85149">0</div>
+            <div class="stats-label">ошибок</div>
+          </div>
+          <div class="stats-score-cell">
+            <div class="stats-big-num" id="stPct" style="color:var(--accent)">—</div>
+            <div class="stats-label">% верных</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Knowledge confidence breakdown -->
+      <div class="stats-block">
+        <div class="stats-block-title">Уверенность по разделам</div>
+        <div class="stats-legend">
+          <span class="leg know">Знаю</span>
+          <span class="leg unsure">Сомневаюсь</span>
+          <span class="leg noknow">Не знаю</span>
+          <span class="leg none">Не отмечено</span>
+        </div>
+        <div id="statsConfList"></div>
+      </div>
+
+      <!-- Overall summary -->
+      <div class="stats-block" id="statsOverall">
+        <div class="stats-block-title">Общий прогресс</div>
+        <div id="statsOverallBar"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -807,23 +1070,30 @@ function updateSectionProgress() {
     const know   = sec.q.filter((_,qi)=>conf[`${mode}-${si}-${qi}`]==='know').length;
     const unsure = sec.q.filter((_,qi)=>conf[`${mode}-${si}-${qi}`]==='unsure').length;
     const noknow = sec.q.filter((_,qi)=>conf[`${mode}-${si}-${qi}`]==='noknow').length;
-    const pct = total ? Math.round(know/total*100) : 0;
-    const shortSec = sec.s.replace(/^Раздел \d+\.\s*/,'').slice(0,45);
-    const fillClass = pct>=70?'':pct<35?'low':'medium';
-    html += `<div style="margin-bottom:10px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
-        <span style="font-size:11.5px;color:var(--text-muted);font-weight:600">${shortSec}</span>
-        <span style="font-size:11px;white-space:nowrap;margin-left:8px">
-          <span style="color:#3fb950">✅${know}</span>
-          ${unsure?`<span style="color:#e3b341"> 🤔${unsure}</span>`:''}
-          ${noknow?`<span style="color:#f85149"> ❌${noknow}</span>`:''}
-          <span style="color:var(--text-dim)"> /${total}</span>
-        </span>
+    const untouched = total - know - unsure - noknow;
+    const kPct = total ? (know/total*100).toFixed(1) : 0;
+    const uPct = total ? (unsure/total*100).toFixed(1) : 0;
+    const nPct = total ? (noknow/total*100).toFixed(1) : 0;
+    const shortSec = sec.s.replace(/^Раздел \d+\.?\s*/,'').replace(/Морфофункциональная характеристика /,'').slice(0,40);
+    html += `<div style="margin-bottom:11px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+        <span style="font-size:11px;color:var(--text-muted);font-weight:600;line-height:1.2">${shortSec}</span>
+        <span style="font-size:10.5px;color:var(--text-dim);white-space:nowrap;margin-left:6px">${know}/${total}</span>
       </div>
-      <div class="sec-mini-bar"><div class="sec-mini-fill ${fillClass}" style="width:${pct}%"></div></div>
+      <div style="width:100%;height:8px;background:var(--border);border-radius:4px;overflow:hidden;display:flex">
+        <div style="width:${kPct}%;background:#3fb950;transition:width .4s"></div>
+        <div style="width:${uPct}%;background:#e3b341;transition:width .4s"></div>
+        <div style="width:${nPct}%;background:#f85149;transition:width .4s"></div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:3px;font-size:10px;color:var(--text-dim)">
+        ${know?`<span style="color:#3fb950">${know} знаю</span>`:''}
+        ${unsure?`<span style="color:#e3b341">${unsure} сомневаюсь</span>`:''}
+        ${noknow?`<span style="color:#f85149">${noknow} не знаю</span>`:''}
+        ${untouched?`<span>${untouched} не отмечено</span>`:''}
+      </div>
     </div>`;
   });
-  el.innerHTML = html;
+  el.innerHTML = html || '<div style="font-size:12px;color:var(--text-dim)">Пока нет отметок — читай вопросы и помечай уверенность</div>';
 }
 
 function selectItem(si, qi) {
@@ -1074,7 +1344,8 @@ init();
 //  QUIZ ENGINE  (static — no API needed)
 // ══════════════════════════════════════════════
 
-let quizItems   = [];   // [{si, qi}] shuffled for current session
+let quizItems   = [];   // [{si, qi}] in section order
+let quizGroups  = [];   // [{si, label, items:[{si,qi,idx}]}] for rendering
 let quizAnswered = {};  // idx → chosen option index
 let quizCorrect  = 0;
 let quizWrong    = 0;
@@ -1085,26 +1356,40 @@ function startQuiz() {
   const sel  = document.getElementById('quizSecSel');
   const secVal = sel ? sel.value : 'all';
 
-  quizItems = [];
+  quizItems  = [];
+  quizGroups = [];
+
   if (secVal === 'all') {
-    QD.forEach((sec,si) => sec.q.forEach((_,qi) => {
-      if (TESTS[cacheKey(si,qi)]) quizItems.push({si,qi});
-    }));
+    QD.forEach((sec, si) => {
+      const groupItems = [];
+      sec.q.forEach((_, qi) => {
+        if (TESTS[cacheKey(si,qi)]) {
+          const idx = quizItems.length;
+          quizItems.push({si, qi});
+          groupItems.push({si, qi, idx});
+        }
+      });
+      if (groupItems.length) quizGroups.push({si, label: sec.s, items: groupItems});
+    });
   } else {
     const si = parseInt(secVal);
-    QD[si].q.forEach((_,qi) => {
-      if (TESTS[cacheKey(si,qi)]) quizItems.push({si,qi});
+    const groupItems = [];
+    QD[si].q.forEach((_, qi) => {
+      if (TESTS[cacheKey(si,qi)]) {
+        const idx = quizItems.length;
+        quizItems.push({si, qi});
+        groupItems.push({si, qi, idx});
+      }
     });
-  }
-  // Fisher-Yates shuffle
-  for (let i = quizItems.length-1; i>0; i--) {
-    const j = Math.floor(Math.random()*(i+1));
-    [quizItems[i],quizItems[j]] = [quizItems[j],quizItems[i]];
+    if (groupItems.length) quizGroups.push({si, label: QD[si].s, items: groupItems});
   }
 
   quizAnswered = {};
   quizCorrect  = 0;
   quizWrong    = 0;
+  _currentFilter = 'all';
+  const bar = document.getElementById('quizResultBar');
+  if(bar) bar.style.display = 'none';
   updateQuizScore();
   renderQuizAll();
 }
@@ -1115,44 +1400,50 @@ function renderQuizAll() {
 
   if (!quizItems.length) {
     el.innerHTML = '<div class="quiz-empty">Нет тестов для этого раздела</div>';
-    const sb = document.getElementById('quizScoreBar');
-    if (sb) sb.style.display = 'none';
     return;
   }
 
-  const sb = document.getElementById('quizScoreBar');
-  if (sb) sb.style.display = '';
-
-  let html = '';
-  quizItems.forEach(({si,qi}, idx) => {
-    const t   = TESTS[cacheKey(si,qi)];
-    if (!t) return;
+  function cardHTML(si, qi, idx) {
+    const t = TESTS[cacheKey(si,qi)];
+    if (!t) return '';
     const ans = quizAnswered[idx];
     const answered = ans !== undefined;
     const cardCls  = answered ? (ans===t.correct?'correct':'wrong') : '';
-
-    html += `<div class="qcard ${cardCls}" id="qcard-${idx}">
-      <div class="qcard-num">${QD[si].s.replace(/^Раздел \d+\.\s*/,'')} · Вопрос ${qi+1}</div>
+    let html = `<div class="qcard ${cardCls}" id="qcard-${idx}">
+      <div class="qcard-num">Вопрос ${qi+1}</div>
       <div class="qcard-q">${escHtml(t.q)}</div>
       <div class="qcard-opts">`;
-
     t.opts.forEach((opt,oi) => {
       let cls = '';
       if (answered) {
-        if (oi===t.correct)                    cls = 'reveal-right';
-        if (oi===ans && ans!==t.correct)       cls = 'chosen-wrong';
-        if (oi===ans && ans===t.correct)       cls = 'chosen-right';
+        if (oi===t.correct)              cls = 'reveal-right';
+        if (oi===ans && ans!==t.correct) cls = 'chosen-wrong';
+        if (oi===ans && ans===t.correct) cls = 'chosen-right';
       }
       html += `<button class="qopt ${cls}" ${answered?'disabled':''}
         onclick="answerQuiz(${idx},${oi})">${escHtml(opt)}</button>`;
     });
-
     html += '</div>';
     if (answered) {
       const icon = ans===t.correct ? '✅' : '❌';
       html += `<div class="qcard-expl">${icon} <strong>${ans===t.correct?'Правильно!':'Неверно.'}</strong> ${md2html(t.expl)}</div>`;
     }
     html += '</div>';
+    return html;
+  }
+
+  let html = '';
+  const multiGroup = quizGroups.length > 1;
+  quizGroups.forEach(group => {
+    if (multiGroup) {
+      const badge = QD[group.si].badge || 'general';
+      const shortLabel = group.label.replace(/^Раздел \d+\.?\s*/,'').replace(/Морфофункциональная характеристика /,'');
+      html += `<div class="quiz-sec-header">
+        <span class="tbadge ${badge}" style="font-size:11px">${shortLabel}</span>
+        <span style="font-size:11px;color:var(--text-dim);margin-left:8px">${group.items.length} вопросов</span>
+      </div>`;
+    }
+    group.items.forEach(({si,qi,idx}) => { html += cardHTML(si,qi,idx); });
   });
 
   el.innerHTML = html;
@@ -1190,13 +1481,176 @@ function answerQuiz(idx, chosen) {
 }
 
 function updateQuizScore() {
-  const el = (id) => document.getElementById(id);
-  if(el('quizScoreNum')) el('quizScoreNum').textContent = quizCorrect;
-  if(el('quizWrongNum')) el('quizWrongNum').textContent = quizWrong;
-  const answered = quizCorrect+quizWrong;
-  const pct = answered ? Math.round(quizCorrect/answered*100) : 0;
-  if(el('quizPct')) el('quizPct').textContent = answered ? pct+'% из '+answered+' отвеченных' : '';
-  if(el('quizMeta')) el('quizMeta').textContent = quizItems.length ? quizItems.length+' вопросов' : '';
+  // store globally so stats panel can read
+  window._quizCorrect = quizCorrect;
+  window._quizWrong   = quizWrong;
+  window._quizTotal   = quizItems.length;
+
+  const answered = quizCorrect + quizWrong;
+  const pct = answered ? Math.round(quizCorrect/answered*100) : null;
+
+  // update result bar numbers
+  const g = id => document.getElementById(id);
+  if(g('qrbCorrect')) g('qrbCorrect').textContent = quizCorrect;
+  if(g('qrbWrong'))   g('qrbWrong').textContent   = quizWrong;
+  if(g('qrbPct'))     g('qrbPct').textContent      = pct !== null ? pct+'%' : '—';
+
+  // show result bar only after first answer
+  const bar = g('quizResultBar');
+  if (bar && answered > 0) bar.style.display = '';
+
+  // when all answered — scroll result bar into view once
+  if (answered === quizItems.length && quizItems.length > 0 && bar) {
+    setTimeout(() => bar.scrollIntoView({behavior:'smooth', block:'nearest'}), 400);
+  }
+}
+
+let _currentFilter = 'all';
+
+function filterQuiz(type) {
+  _currentFilter = type;
+
+  // update button states
+  ['btnShowAll','btnShowWrong','btnShowCorrect'].forEach(id => {
+    const btn = document.getElementById(id);
+    if(btn) btn.classList.remove('active');
+  });
+  const map = {all:'btnShowAll', wrong:'btnShowWrong', correct:'btnShowCorrect'};
+  const active = document.getElementById(map[type]);
+  if(active) active.classList.add('active');
+
+  // show/hide cards
+  document.querySelectorAll('.qcard').forEach(card => {
+    const isCorrect = card.classList.contains('correct');
+    const isWrong   = card.classList.contains('wrong');
+    const answered  = isCorrect || isWrong;
+
+    let show = false;
+    if (type === 'all')     show = true;
+    if (type === 'wrong')   show = isWrong   || !answered;
+    if (type === 'correct') show = isCorrect;
+
+    card.classList.toggle('hidden-by-filter', !show);
+  });
+
+  // hide section headers that have no visible cards
+  document.querySelectorAll('.quiz-sec-header').forEach(header => {
+    // find cards until next header
+    let el = header.nextElementSibling;
+    let hasVisible = false;
+    while (el && !el.classList.contains('quiz-sec-header')) {
+      if (el.classList.contains('qcard') && !el.classList.contains('hidden-by-filter')) {
+        hasVisible = true; break;
+      }
+      el = el.nextElementSibling;
+    }
+    header.classList.toggle('hidden-by-filter', !hasVisible);
+  });
+
+  // update wrong button label with count
+  const wrongBtn = document.getElementById('btnShowWrong');
+  if (wrongBtn) {
+    const cnt = document.querySelectorAll('.qcard.wrong').length;
+    wrongBtn.textContent = `❌ Ошибки${cnt ? ' ('+cnt+')' : ''}`;
+  }
+  const correctBtn = document.getElementById('btnShowCorrect');
+  if (correctBtn) {
+    const cnt = document.querySelectorAll('.qcard.correct').length;
+    correctBtn.textContent = `✅ Верные${cnt ? ' ('+cnt+')' : ''}`;
+  }
+}
+
+function renderStats() {
+  const correct = window._quizCorrect || 0;
+  const wrong   = window._quizWrong   || 0;
+  const answered = correct + wrong;
+  const pct = answered ? Math.round(correct/answered*100) : null;
+
+  // Test score section
+  const el = id => document.getElementById(id);
+  if(el('stCorrect')) el('stCorrect').textContent = correct;
+  if(el('stWrong'))   el('stWrong').textContent   = wrong;
+  if(el('stPct'))     el('stPct').textContent      = pct !== null ? pct+'%' : '—';
+
+  // Show "no tests yet" state
+  const testBlock = el('statsTestBlock');
+  if (testBlock) {
+    const subtitle = testBlock.querySelector('.stats-block-title');
+    if (subtitle) subtitle.textContent = answered
+      ? `Результаты последнего теста (${answered} вопросов)`
+      : 'Результаты тестов — ещё не начато';
+  }
+
+  // Confidence per section
+  const confList = el('statsConfList');
+  if (!confList) return;
+
+  const data = QD;
+  let totalKnow=0, totalUnsure=0, totalNoknow=0, totalQ=0;
+  let html = '';
+
+  data.forEach((sec, si) => {
+    const total  = sec.q.length;
+    const know   = sec.q.filter((_,qi) => conf[`questions-${si}-${qi}`]==='know').length;
+    const unsure = sec.q.filter((_,qi) => conf[`questions-${si}-${qi}`]==='unsure').length;
+    const noknow = sec.q.filter((_,qi) => conf[`questions-${si}-${qi}`]==='noknow').length;
+    const none   = total - know - unsure - noknow;
+    totalKnow   += know;
+    totalUnsure += unsure;
+    totalNoknow += noknow;
+    totalQ      += total;
+
+    const kPct = total ? (know/total*100).toFixed(1) : 0;
+    const uPct = total ? (unsure/total*100).toFixed(1) : 0;
+    const nPct = total ? (noknow/total*100).toFixed(1) : 0;
+    const label = sec.s.replace(/^Раздел \d+\.?\s*/,'').replace(/Морфофункциональная характеристика /,'');
+
+    html += `<div class="stats-sec-row">
+      <div class="stats-sec-name">
+        <span>${label}</span>
+        <span style="color:var(--text-dim)">${know}/${total}</span>
+      </div>
+      <div class="stats-seg-bar">
+        <div style="width:${kPct}%;background:#3fb950"></div>
+        <div style="width:${uPct}%;background:#e3b341"></div>
+        <div style="width:${nPct}%;background:#f85149"></div>
+      </div>
+      <div class="stats-counts">
+        ${know   ? `<span style="color:#3fb950">${know} знаю</span>`        : ''}
+        ${unsure ? `<span style="color:#e3b341">${unsure} сомневаюсь</span>`: ''}
+        ${noknow ? `<span style="color:#f85149">${noknow} не знаю</span>`   : ''}
+        ${none   ? `<span>${none} не отмечено</span>`                       : ''}
+      </div>
+    </div>`;
+  });
+
+  confList.innerHTML = html || '<div style="color:var(--text-dim);font-size:13px">Пока нет отметок. Читай вопросы и отмечай уверенность.</div>';
+
+  // Overall bar
+  const overallEl = el('statsOverallBar');
+  if (overallEl && totalQ) {
+    const kP = (totalKnow/totalQ*100).toFixed(1);
+    const uP = (totalUnsure/totalQ*100).toFixed(1);
+    const nP = (totalNoknow/totalQ*100).toFixed(1);
+    const noneP = ((totalQ-totalKnow-totalUnsure-totalNoknow)/totalQ*100).toFixed(1);
+    overallEl.innerHTML = `
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:6px">
+        <span>Всего вопросов: ${totalQ}</span>
+        <span style="color:#3fb950;font-weight:700">${Math.round(kP)}% знаю</span>
+      </div>
+      <div class="stats-seg-bar" style="height:14px;border-radius:7px">
+        <div style="width:${kP}%;background:#3fb950"></div>
+        <div style="width:${uP}%;background:#e3b341"></div>
+        <div style="width:${nP}%;background:#f85149"></div>
+        <div style="width:${noneP}%;background:var(--border)"></div>
+      </div>
+      <div class="stats-counts" style="margin-top:6px;justify-content:center;gap:16px">
+        <span style="color:#3fb950">✓ ${totalKnow} знаю</span>
+        <span style="color:#e3b341">~ ${totalUnsure} сомневаюсь</span>
+        <span style="color:#f85149">✗ ${totalNoknow} не знаю</span>
+        <span>${totalQ-totalKnow-totalUnsure-totalNoknow} не отмечено</span>
+      </div>`;
+  }
 }
 
 function escHtml(s) {
@@ -1204,10 +1658,27 @@ function escHtml(s) {
 }
 // ── HOOK INTO switchTab ──────────────────────────────────
 
+function buildQuizSectionSelect() {
+  const sel = document.getElementById('quizSecSel');
+  if (!sel) return;
+  sel.innerHTML = '<option value="all">Все разделы</option>';
+  QD.forEach((sec, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = sec.s.length > 55 ? sec.s.slice(0,52)+'…' : sec.s;
+    sel.appendChild(opt);
+  });
+}
+
 const _origSwitchTab = switchTab;
 switchTab = function(m) {
+  // hide all extra panels first
+  ['quizPanel','statsPanel'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
+
   if (m === 'quiz') {
-    loadQuizCache();
     mode = 'quiz';
     document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===2));
     document.getElementById('welcomePanel').classList.remove('active');
@@ -1216,14 +1687,20 @@ switchTab = function(m) {
     buildQuizSectionSelect();
     return;
   }
-  // hide quiz panel
-  document.getElementById('quizPanel').classList.remove('active');
+  if (m === 'stats') {
+    mode = 'stats';
+    document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===3));
+    document.getElementById('welcomePanel').classList.remove('active');
+    document.getElementById('qPanel').classList.remove('active');
+    document.getElementById('statsPanel').classList.add('active');
+    renderStats();
+    return;
+  }
+
   _origSwitchTab(m);
 };
 
-// initialise select on page load
 document.addEventListener('DOMContentLoaded', () => {
-  loadQuizCache();
   buildQuizSectionSelect();
 });
 
