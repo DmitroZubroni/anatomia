@@ -214,8 +214,8 @@ html, body {
 
 .hamburger-btn {
   display: flex;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   background: none;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
@@ -300,8 +300,8 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  height: 36px;
-  padding: 0 8px;
+  height: 44px;
+  padding: 0 12px;
   border: none;
   background: transparent;
   color: var(--text-muted);
@@ -376,6 +376,9 @@ html, body {
   gap: 1px;
 }
 .state-pill {
+  /* Д1: плотный режим 26px — осознанное исключение для внутреннего demo-
+     переключателя состояний (Н4), используемого под мышь в разработке;
+     на сенсорных экранах принудительно возвращаем 44px. */
   height: 26px;
   padding: 0 5px;
   font-size: 12px;
@@ -388,6 +391,12 @@ html, body {
   transition: all 0.15s ease;
   white-space: nowrap;
 }
+@media (pointer: coarse) {
+  .state-pill {
+    height: 44px;
+    padding: 0 10px;
+  }
+}
 .state-pill:hover {
   color: var(--text);
 }
@@ -398,8 +407,8 @@ html, body {
 }
 
 .icon-btn {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -465,13 +474,13 @@ html, body {
 }
 .sidebar-search-input {
   width: 100%;
-  height: 40px;
+  height: 44px;
   padding: 0 32px 0 34px;
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   color: var(--text);
-  font-size: 14px;
+  font-size: 16px;
   font-family: inherit;
   outline: none;
   transition: border-color 0.15s ease, background 0.15s ease;
@@ -483,8 +492,8 @@ html, body {
 .sidebar-search-clear {
   position: absolute;
   right: 8px;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   display: none;
   align-items: center;
   justify-content: center;
@@ -493,6 +502,17 @@ html, body {
   color: var(--text-dim);
   cursor: pointer;
   border-radius: 50%;
+}
+/* Д1: визуальный размер 24px сохранён (компактное поле поиска), но
+   область нажатия увеличена невидимым псевдоэлементом до 44×44px */
+.sidebar-search-clear::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
 }
 .sidebar-search-clear:hover {
   background: var(--border);
@@ -513,6 +533,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 44px;
   padding: 7px 9px;
   background: var(--surface-2);
   border-radius: var(--radius-sm);
@@ -557,7 +578,7 @@ html, body {
   align-items: center;
   gap: 8px;
   padding: 8px 10px;
-  min-height: 42px;
+  min-height: 44px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: 14px;
@@ -812,8 +833,8 @@ html, body {
   gap: 6px;
 }
 .layer-btn {
-  height: 34px;
-  padding: 0 11px;
+  height: 44px;
+  padding: 0 14px;
   border: 1px solid var(--border);
   background: var(--surface-2);
   color: var(--text-muted);
@@ -886,6 +907,14 @@ html, body {
 }
 .anat-node.selected {
   filter: drop-shadow(0 0 12px var(--primary));
+}
+/* Д2: клавиатурный фокус на анатомических узлах атласа — та же подсветка,
+   что на hover, плюс стандартная обводка :focus-visible */
+.anat-node:focus-visible {
+  filter: drop-shadow(0 0 8px var(--border-focus));
+  opacity: 1 !important;
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
 }
 .anat-pulse-ring {
   animation: pulseNode 2s infinite ease-out;
@@ -1020,7 +1049,7 @@ html, body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 40px;
+  min-height: 44px;
   padding: 0 16px;
   border-radius: var(--radius-sm);
   font-size: 14px;
@@ -1175,13 +1204,13 @@ html, body {
   box-shadow: var(--shadow-sm);
 }
 .quiz-sec-select {
-  height: 40px;
+  height: 44px;
   padding: 0 12px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--surface-2);
   color: var(--text);
-  font-size: 14px;
+  font-size: 16px;
   font-family: inherit;
   outline: none;
   min-width: 200px;
@@ -1215,7 +1244,7 @@ html, body {
   align-items: flex-start;
   gap: 10px;
   padding: 10px 14px;
-  min-height: 42px;
+  min-height: 44px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--surface-2);
@@ -1512,17 +1541,17 @@ html, body {
               <!-- СЛОЙ 1: СКЕЛЕТНАЯ СИСТЕМА (ОСТЕОЛОГИЯ) -->
               <g id="layer-skeleton" class="anat-layer">
                 <!-- Череп (Cranium) -->
-                <path class="anat-node" data-organ="cranium" onclick="selectOrgan('cranium')"
+                <path class="anat-node" data-organ="cranium" onclick="selectOrgan('cranium')" tabindex="0" role="button" aria-label="Изучить: Череп" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('cranium');}"
                   d="M 270 70 C 270 45, 330 45, 330 70 C 330 85, 325 105, 300 108 C 275 105, 270 85, 270 70 Z"
                   fill="url(#gradBone)" stroke="var(--text-muted)" stroke-width="2"/>
                 <!-- Нижняя челюсть -->
                 <path d="M 282 108 Q 300 120 318 108" fill="none" stroke="var(--text-muted)" stroke-width="2"/>
                 <!-- Позвоночник (Columna vertebralis) -->
-                <path class="anat-node" data-organ="spine" onclick="selectOrgan('spine')"
+                <path class="anat-node" data-organ="spine" onclick="selectOrgan('spine')" tabindex="0" role="button" aria-label="Изучить: Позвоночный столб" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('spine');}"
                   d="M 300 120 L 300 370"
                   stroke="var(--field-border)" stroke-width="10" stroke-linecap="round" stroke-dasharray="4 3"/>
                 <!-- Грудная клетка (Thorax / Costae) -->
-                <g class="anat-node" data-organ="ribs" onclick="selectOrgan('ribs')" stroke="var(--border)" stroke-width="3" fill="none">
+                <g class="anat-node" data-organ="ribs" onclick="selectOrgan('ribs')" tabindex="0" role="button" aria-label="Изучить: Грудная клетка" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('ribs');}" stroke="var(--border)" stroke-width="3" fill="none">
                   <path d="M 270 170 Q 240 180 260 210 Q 285 220 300 220"/>
                   <path d="M 330 170 Q 360 180 340 210 Q 315 220 300 220"/>
                   <path d="M 275 190 Q 235 205 260 235 Q 285 245 300 245"/>
@@ -1533,7 +1562,7 @@ html, body {
                 <!-- Грудина (Sternum) -->
                 <rect x="295" y="165" width="10" height="90" rx="3" fill="url(#gradBone)" stroke="var(--text-muted)" stroke-width="1.5"/>
                 <!-- Тазовый пояс (Pelvis) -->
-                <path class="anat-node" data-organ="pelvis" onclick="selectOrgan('pelvis')"
+                <path class="anat-node" data-organ="pelvis" onclick="selectOrgan('pelvis')" tabindex="0" role="button" aria-label="Изучить: Тазовый пояс" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('pelvis');}"
                   d="M 245 350 Q 300 340 355 350 Q 370 380 340 405 Q 300 395 260 405 Q 230 380 245 350 Z"
                   fill="url(#gradBone)" stroke="var(--text-muted)" stroke-width="2"/>
                 <!-- Бедренные кости (Femur) -->
@@ -1555,17 +1584,17 @@ html, body {
               <!-- СЛОЙ 2: МЫШЕЧНАЯ СИСТЕМА (МИОЛОГИЯ) -->
               <g id="layer-muscles" class="anat-layer">
                 <!-- Грудные мышцы (Pectoralis major) -->
-                <path class="anat-node" data-organ="pectoralis" onclick="selectOrgan('pectoralis')"
+                <path class="anat-node" data-organ="pectoralis" onclick="selectOrgan('pectoralis')" tabindex="0" role="button" aria-label="Изучить: Большая грудная мышца" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('pectoralis');}"
                   d="M 292 175 Q 240 185 245 225 Q 275 235 292 230 Z"
                   fill="url(#gradMuscle)" opacity="0.85" stroke="var(--primary)" stroke-width="1"/>
-                <path class="anat-node" data-organ="pectoralis" onclick="selectOrgan('pectoralis')"
+                <path class="anat-node" data-organ="pectoralis" onclick="selectOrgan('pectoralis')" tabindex="0" role="button" aria-label="Изучить: Большая грудная мышца" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('pectoralis');}"
                   d="M 308 175 Q 360 185 355 225 Q 325 235 308 230 Z"
                   fill="url(#gradMuscle)" opacity="0.85" stroke="var(--primary)" stroke-width="1"/>
                 <!-- Дельтовидные мышцы (Deltoideus) -->
                 <path d="M 240 155 Q 220 180 235 210 Q 255 190 250 160 Z" fill="url(#gradMuscle)" opacity="0.8"/>
                 <path d="M 360 155 Q 380 180 365 210 Q 345 190 350 160 Z" fill="url(#gradMuscle)" opacity="0.8"/>
                 <!-- Брюшной пресс (Rectus abdominis) -->
-                <g class="anat-node" data-organ="abdominis" onclick="selectOrgan('abdominis')" fill="url(#gradMuscle)" opacity="0.8">
+                <g class="anat-node" data-organ="abdominis" onclick="selectOrgan('abdominis')" tabindex="0" role="button" aria-label="Изучить: Прямая мышца живота" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('abdominis');}" fill="url(#gradMuscle)" opacity="0.8">
                   <rect x="282" y="240" width="16" height="24" rx="4"/>
                   <rect x="302" y="240" width="16" height="24" rx="4"/>
                   <rect x="282" y="268" width="16" height="24" rx="4"/>
@@ -1584,13 +1613,13 @@ html, body {
               <!-- СЛОЙ 3: СЕРДЕЧНО-СОСУДИСТАЯ СИСТЕМА (АНГИОЛОГИЯ) -->
               <g id="layer-cardio" class="anat-layer">
                 <!-- Сердце (Cor / Миокард) -->
-                <g class="anat-node" data-organ="cor" onclick="selectOrgan('cor')">
+                <g class="anat-node" data-organ="cor" onclick="selectOrgan('cor')" tabindex="0" role="button" aria-label="Изучить: Сердце" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('cor');}">
                   <path d="M 300 200 C 300 185, 275 175, 265 195 C 255 215, 280 240, 300 260 C 320 240, 345 215, 335 195 C 325 175, 300 185, 300 200 Z"
                     fill="url(#gradArtery)" stroke="#fff" stroke-width="1.5"/>
                   <circle cx="300" cy="215" r="8" fill="#fff" opacity="0.3" class="anat-pulse-ring"/>
                 </g>
                 <!-- Дуга аорты (Arcus aortae) -->
-                <path class="anat-node" data-organ="aorta" onclick="selectOrgan('aorta')"
+                <path class="anat-node" data-organ="aorta" onclick="selectOrgan('aorta')" tabindex="0" role="button" aria-label="Изучить: Аорта" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('aorta');}"
                   d="M 298 190 Q 295 160 310 160 Q 320 160 315 190 L 312 360"
                   fill="none" stroke="url(#gradArtery)" stroke-width="4.5" stroke-linecap="round"/>
                 <!-- Полые вены (Vena cava) -->
@@ -1606,7 +1635,7 @@ html, body {
               <!-- СЛОЙ 4: НЕРВНАЯ СИСТЕМА (НЕВРОЛОГИЯ) -->
               <g id="layer-neuro" class="anat-layer">
                 <!-- Головной мозг (Encephalon) -->
-                <g class="anat-node" data-organ="brain" onclick="selectOrgan('brain')">
+                <g class="anat-node" data-organ="brain" onclick="selectOrgan('brain')" tabindex="0" role="button" aria-label="Изучить: Головной мозг" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('brain');}">
                   <path d="M 275 68 C 275 48, 325 48, 325 68 C 332 82, 320 95, 300 95 C 280 95, 268 82, 275 68 Z"
                     fill="url(#gradNeuro)" filter="url(#glowNeuro)" opacity="0.95"/>
                   <!-- Борозды и извилины коры -->
@@ -1614,7 +1643,7 @@ html, body {
                   <path d="M 280 75 Q 300 72 315 80" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
                 </g>
                 <!-- Спинной мозг (Medulla spinalis) -->
-                <line class="anat-node" data-organ="spinal_cord" onclick="selectOrgan('spinal_cord')"
+                <line class="anat-node" data-organ="spinal_cord" onclick="selectOrgan('spinal_cord')" tabindex="0" role="button" aria-label="Изучить: Спинной мозг" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('spinal_cord');}"
                   x1="300" y1="95" x2="300" y2="360" stroke="#f59e0b" stroke-width="3.5" stroke-linecap="round"/>
                 <!-- Сплетения и периферические нервы -->
                 <path d="M 300 140 Q 250 170 200 270" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 2"/>
@@ -1626,23 +1655,23 @@ html, body {
               <!-- СЛОЙ 5: ВНУТРЕННИЕ ОРГАНЫ (СПЛАНХНОЛОГИЯ) -->
               <g id="layer-viscera" class="anat-layer">
                 <!-- Лёгкие (Pulmones) -->
-                <g class="anat-node" data-organ="lungs" onclick="selectOrgan('lungs')" opacity="0.85">
+                <g class="anat-node" data-organ="lungs" onclick="selectOrgan('lungs')" tabindex="0" role="button" aria-label="Изучить: Лёгкие" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('lungs');}" opacity="0.85">
                   <path d="M 260 170 C 240 190, 240 230, 260 250 C 275 250, 280 200, 265 170 Z" fill="#93c5fd" stroke="#3b82f6" stroke-width="1.5"/>
                   <path d="M 340 170 C 360 190, 360 230, 340 250 C 325 250, 320 200, 335 170 Z" fill="#93c5fd" stroke="#3b82f6" stroke-width="1.5"/>
                 </g>
                 <!-- Печень (Hepar) -->
-                <path class="anat-node" data-organ="hepar" onclick="selectOrgan('hepar')"
+                <path class="anat-node" data-organ="hepar" onclick="selectOrgan('hepar')" tabindex="0" role="button" aria-label="Изучить: Печень" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('hepar');}"
                   d="M 260 255 Q 315 250 325 275 Q 310 295 265 285 Z"
                   fill="#b45309" stroke="#78350f" stroke-width="1.5" opacity="0.9"/>
                 <!-- Желудок (Gaster) -->
-                <path class="anat-node" data-organ="gaster" onclick="selectOrgan('gaster')"
+                <path class="anat-node" data-organ="gaster" onclick="selectOrgan('gaster')" tabindex="0" role="button" aria-label="Изучить: Желудок" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('gaster');}"
                   d="M 315 260 Q 335 280 320 305 Q 295 305 305 280 Z"
                   fill="#f43f5e" stroke="#be123c" stroke-width="1.5" opacity="0.9"/>
                 <!-- Почки (Renes) -->
-                <ellipse class="anat-node" data-organ="renes" onclick="selectOrgan('renes')" cx="270" cy="310" rx="10" ry="16" fill="#be185d" opacity="0.9"/>
-                <ellipse class="anat-node" data-organ="renes" onclick="selectOrgan('renes')" cx="330" cy="310" rx="10" ry="16" fill="#be185d" opacity="0.9"/>
+                <ellipse class="anat-node" data-organ="renes" onclick="selectOrgan('renes')" tabindex="0" role="button" aria-label="Изучить: Почки" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('renes');}" cx="270" cy="310" rx="10" ry="16" fill="#be185d" opacity="0.9"/>
+                <ellipse class="anat-node" data-organ="renes" onclick="selectOrgan('renes')" tabindex="0" role="button" aria-label="Изучить: Почки" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('renes');}" cx="330" cy="310" rx="10" ry="16" fill="#be185d" opacity="0.9"/>
                 <!-- Кишечник (Intestinum) -->
-                <path class="anat-node" data-organ="intestinum" onclick="selectOrgan('intestinum')"
+                <path class="anat-node" data-organ="intestinum" onclick="selectOrgan('intestinum')" tabindex="0" role="button" aria-label="Изучить: Кишечник" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('intestinum');}"
                   d="M 275 320 Q 300 315 325 320 Q 335 360 300 365 Q 265 360 275 320 Z"
                   fill="#fbbf24" stroke="#d97706" stroke-width="1.5" opacity="0.85"/>
               </g>
@@ -1655,18 +1684,18 @@ html, body {
                 <path d="M 100 350 C 100 150, 500 150, 500 350 C 500 550, 100 550, 100 350 Z"
                   fill="none" stroke="var(--primary)" stroke-width="6" stroke-dasharray="10 4"/>
                 <!-- Ядро клетки (Nucleus) -->
-                <g class="anat-node" data-organ="nucleus" onclick="selectOrgan('nucleus')">
+                <g class="anat-node" data-organ="nucleus" onclick="selectOrgan('nucleus')" tabindex="0" role="button" aria-label="Изучить: Клеточное ядро" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('nucleus');}">
                   <circle cx="300" cy="350" r="90" fill="url(#gradNeuro)" opacity="0.75" stroke="var(--primary)" stroke-width="3"/>
                   <!-- Ядрышко (Nucleolus) -->
                   <circle cx="320" cy="335" r="30" fill="var(--primary)" opacity="0.85"/>
                 </g>
                 <!-- Митохондрии (Mitochondria — кристы) -->
-                <g class="anat-node" data-organ="mitochondria" onclick="selectOrgan('mitochondria')">
+                <g class="anat-node" data-organ="mitochondria" onclick="selectOrgan('mitochondria')" tabindex="0" role="button" aria-label="Изучить: Митохондрия" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('mitochondria');}">
                   <rect x="160" y="220" width="70" height="40" rx="20" fill="#ef4444" stroke="#991b1b" stroke-width="2"/>
                   <path d="M 175 240 Q 185 225 195 240 T 215 240" fill="none" stroke="#fff" stroke-width="2"/>
                 </g>
                 <!-- Аппарат Гольджи -->
-                <g class="anat-node" data-organ="golgi" onclick="selectOrgan('golgi')">
+                <g class="anat-node" data-organ="golgi" onclick="selectOrgan('golgi')" tabindex="0" role="button" aria-label="Изучить: Аппарат Гольджи" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('golgi');}">
                   <path d="M 380 230 Q 430 220 440 250" fill="none" stroke="#3b82f6" stroke-width="5" stroke-linecap="round"/>
                   <path d="M 390 250 Q 440 240 450 270" fill="none" stroke="#3b82f6" stroke-width="5" stroke-linecap="round"/>
                   <path d="M 400 270 Q 450 260 460 290" fill="none" stroke="#3b82f6" stroke-width="5" stroke-linecap="round"/>
@@ -2155,7 +2184,7 @@ function renderSidebarList() {
 
     html += `
       <div class="sec-group" id="secGroup-${si}">
-        <div class="sec-header" onclick="toggleSecOpen(${si})">
+        <div class="sec-header" id="secHeader-${si}" role="button" tabindex="0" aria-expanded="true" aria-controls="secItems-${si}" onclick="toggleSecOpen(${si})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();this.click();}">
           <div class="sec-header-title">${typograph(shortTitle)}</div>
           <div class="sec-header-stat">${knowCount}/${total}</div>
         </div>
@@ -2172,7 +2201,7 @@ function renderSidebarList() {
       const textPreview = q.text.length > 60 ? q.text.slice(0, 58) + '…' : q.text;
 
       html += `
-        <div class="q-list-item ${conf} ${isActive ? 'active' : ''}" id="item-${idKey}" onclick="selectQuestionItem(${si}, ${qi})">
+        <div class="q-list-item ${conf} ${isActive ? 'active' : ''}" id="item-${idKey}" role="button" tabindex="0"${isActive ? ' aria-current="true"' : ''} onclick="selectQuestionItem(${si}, ${qi})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();this.click();}">
           <div class="status-dot"></div>
           <div class="q-number-badge">${qi + 1}</div>
           <div style="flex:1">${typograph(textPreview)}</div>
@@ -2591,6 +2620,10 @@ function closeSidebar() {
 function toggleSecOpen(si) {
   const el = document.getElementById(`secItems-${si}`);
   if (el) el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+  // Д2/Д4: синхронизация aria-expanded с визуальным состоянием — доступность,
+  // поведение сворачивания раздела не меняется.
+  const header = document.getElementById(`secHeader-${si}`);
+  if (header) header.setAttribute('aria-expanded', el && el.style.display !== 'none' ? 'true' : 'false');
 }
 
 // ── ХРАНИЛИЩЕ СОСТОЯНИЯ (LOCALSTORAGE) ──
