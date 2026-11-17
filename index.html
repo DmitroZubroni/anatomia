@@ -366,6 +366,7 @@ html, body {
   color: var(--text);
 }
 
+.state-switcher[hidden] { display: none; }
 .state-switcher {
   display: flex;
   align-items: center;
@@ -2669,7 +2670,7 @@ window.addEventListener('keydown', e => {
 
 // ── ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ ──
 document.addEventListener('DOMContentLoaded', () => {
-  if (new URLSearchParams(location.search).has("review")) document.querySelector(".state-switcher").hidden = false;
+  if (["review", "dev"].some(key => new URLSearchParams(location.search).has(key))) document.querySelector(".state-switcher").hidden = false;
   initTheme();
   loadStorageState();
   renderSidebarList(); // пререндеринг списка вопросов сразу при старте
