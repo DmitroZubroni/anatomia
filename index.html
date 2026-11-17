@@ -1452,7 +1452,7 @@ html, body {
 </aside>
 
 <!-- ГЛАВНАЯ СЦЕНА (MAIN STAGE) -->
-<main class="main-stage" id="mainStage" tabindex="-1">
+<main class="main-stage" id="mainStage" tabindex="0">
 
   <!-- 4 СОСТОЯНИЯ: ОБЕРТКА СИСТЕМЫ (У1) -->
   <div id="loadingStateContainer" style="display:none" class="loading-skeleton">
@@ -1791,10 +1791,12 @@ html, body {
       <div class="quiz-container">
         <div class="quiz-top-card">
           <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-            <label for="quizSectionSelect" style="font-size:14px;font-weight:700;color:var(--text-muted)">Раздел:</label>
+            <label id="quizSectionLabel" for="quizSectionSelect" style="font-size:14px;font-weight:700;color:var(--text-muted)">Раздел:</label>
             <select class="quiz-sec-select" id="quizSectionSelect" onchange="initQuizSelection()">
               <option value="all">Все разделы атласа</option>
             </select>
+            <button hidden id="quizSectionTrigger" class="atlas-select-trigger" type="button" role="combobox" aria-labelledby="quizSectionLabel quizSectionValue" aria-haspopup="listbox" aria-expanded="false" aria-controls="quizSectionOptions"><span id="quizSectionValue">Все разделы атласа</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div hidden id="quizSectionOptions" class="atlas-select-options" role="listbox" aria-labelledby="quizSectionLabel"></div>
             <button class="btn btn-primary" onclick="startQuizTest()">▶ Начать тест</button>
           </div>
           <div id="quizScoreBanner" style="display:none;font-size:14px;font-family:var(--font-mono);font-weight:700">
@@ -2675,5 +2677,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateGlobalProgressBar();
 });
 </script>
+<script src="atlas-ui.js" defer></script>
 </body>
 </html>
