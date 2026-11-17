@@ -1,5 +1,26 @@
 // Presentation-only select adapter. Existing quiz change handler and data stay intact.
 document.addEventListener('DOMContentLoaded', () => {
+  const tabs = [...document.querySelectorAll('.nav-tab')];
+  function syncNavigation() {
+    tabs.forEach(tab => {
+      const selected = tab.classList.contains('active');
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    });
+    document.getElementById('burgerBtn').setAttribute('aria-expanded', String(document.getElementById('sidebar').classList.contains('open')));
+    document.querySelectorAll('.layer-btn').forEach(button => button.setAttribute('aria-pressed', String(button.classList.contains('active'))));
+  }
+  tabs.forEach((tab, index) => tab.addEventListener('keydown', event => {
+    if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    event.stopPropagation();
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+    tabs[next].click();
+    tabs[next].focus();
+  }));
+  const observer = new MutationObserver(syncNavigation);
+  document.querySelectorAll('.nav-tab, .layer-btn, #sidebar').forEach(element => observer.observe(element, { attributes: true, attributeFilter: ['class'] }));
+  syncNavigation();
   const source = document.getElementById('quizSectionSelect');
   const trigger = document.getElementById('quizSectionTrigger');
   const list = document.getElementById('quizSectionOptions');

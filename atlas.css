@@ -59,6 +59,8 @@
 .atlas-select-options [role="option"]:hover, .atlas-select-options .highlighted { background: var(--primary-soft); color: var(--accent-text); }
 .atlas-select-options [aria-selected="true"] { font-weight: 700; }
 .main-stage:focus-visible { outline-offset: -4px; }
+/* Questions and tasks share an existing card; keep that card visible in task mode. */
+body.mode-tasks #panelQuestions { display: block; }
 @media (max-width: 1100px) {
   .header { padding-inline: 16px; gap: 8px; }
   .study-progress-card, .atlas-format { display: none; }
@@ -102,4 +104,9 @@
   .dossier-name { font-size: 24px; }
   .stats-overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stat-metric-card { padding: 16px; }
+}
+@media (max-width: 360px) {
+  .brand-crest { display: none; }
+  .header-left { gap: 8px; }
+  .brand-badge { gap: 0; }
 }
