@@ -1,0 +1,244 @@
+{
+  "run": "2026-11-18-0055",
+  "repo": "anatomia",
+  "records": [
+    {
+      "view": "atlas",
+      "theme": "light",
+      "device": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-atlas-light-desktop-1440x1000.png",
+      "capturedAt": "2026-11-17T21:55:46.779Z",
+      "overflow": false
+    },
+    {
+      "view": "questions",
+      "theme": "light",
+      "device": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-questions-light-desktop-1440x1000.png",
+      "capturedAt": "2026-11-17T21:57:19.982Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "tasks",
+      "theme": "light",
+      "device": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-tasks-light-desktop-1440x1000.png",
+      "capturedAt": "2026-11-17T21:57:20.773Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "quiz",
+      "theme": "light",
+      "device": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-quiz-light-desktop-1440x1000.png",
+      "capturedAt": "2026-11-17T21:57:21.540Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "stats",
+      "theme": "light",
+      "device": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-stats-light-desktop-1440x1000.png",
+      "capturedAt": "2026-11-17T21:57:22.332Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "atlas",
+      "theme": "light",
+      "device": "mobile",
+      "width": 375,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-atlas-light-mobile-375x1000.png",
+      "capturedAt": "2026-11-17T21:55:47.928Z",
+      "overflow": false
+    },
+    {
+      "view": "questions",
+      "theme": "light",
+      "device": "mobile",
+      "width": 375,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-questions-light-mobile-375x1000.png",
+      "capturedAt": "2026-11-17T21:57:23.162Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "tasks",
+      "theme": "light",
+      "device": "mobile",
+      "width": 375,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-tasks-light-mobile-375x1000.png",
+      "capturedAt": "2026-11-17T21:57:23.932Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "quiz",
+      "theme": "light",
+      "device": "mobile",
+      "width": 375,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-quiz-light-mobile-375x1000.png",
+      "capturedAt": "2026-11-17T21:57:24.694Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "stats",
+      "theme": "light",
+      "device": "mobile",
+      "width": 375,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-stats-light-mobile-375x1000.png",
+      "capturedAt": "2026-11-17T21:57:25.465Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "atlas",
+      "theme": "dark",
+      "device": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-atlas-dark-desktop-1440x1000.png",
+      "capturedAt": "2026-11-17T21:55:48.929Z",
+      "overflow": false
+    },
+    {
+      "view": "questions",
+      "theme": "dark",
+      "device": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-questions-dark-desktop-1440x1000.png",
+      "capturedAt": "2026-11-17T21:57:26.318Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "tasks",
+      "theme": "dark",
+      "device": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-tasks-dark-desktop-1440x1000.png",
+      "capturedAt": "2026-11-17T21:57:27.103Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "quiz",
+      "theme": "dark",
+      "device": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-quiz-dark-desktop-1440x1000.png",
+      "capturedAt": "2026-11-17T21:57:27.872Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "stats",
+      "theme": "dark",
+      "device": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-stats-dark-desktop-1440x1000.png",
+      "capturedAt": "2026-11-17T21:57:28.647Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "atlas",
+      "theme": "dark",
+      "device": "mobile",
+      "width": 375,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-atlas-dark-mobile-375x1000.png",
+      "capturedAt": "2026-11-17T21:55:49.994Z",
+      "overflow": false
+    },
+    {
+      "view": "questions",
+      "theme": "dark",
+      "device": "mobile",
+      "width": 375,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-questions-dark-mobile-375x1000.png",
+      "capturedAt": "2026-11-17T21:57:29.482Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "tasks",
+      "theme": "dark",
+      "device": "mobile",
+      "width": 375,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-tasks-dark-mobile-375x1000.png",
+      "capturedAt": "2026-11-17T21:57:30.247Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "quiz",
+      "theme": "dark",
+      "device": "mobile",
+      "width": 375,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-quiz-dark-mobile-375x1000.png",
+      "capturedAt": "2026-11-17T21:57:31.011Z",
+      "overflow": false,
+      "selectedTab": "true"
+    },
+    {
+      "view": "stats",
+      "theme": "dark",
+      "device": "mobile",
+      "width": 375,
+      "height": 1000,
+      "path": "/Users/atlant/Projects/myProjects/anatomia/reports/2026-11-18-0055/anatomia-stats-dark-mobile-375x1000.png",
+      "capturedAt": "2026-11-17T21:57:31.782Z",
+      "overflow": false,
+      "selectedTab": "true"
+    }
+  ],
+  "failedRequests": [
+    {
+      "url": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggexSvfedN4.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTjYgEM86xRbPQ.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/manrope/v23/xn7gYHE41ni1AdIRggOxSvfedN62Zw.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_naUXtHA-X-uE0qEEw.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgEM86xQ.woff2",
+      "error": "net::ERR_ABORTED"
+    }
+  ]
+}
