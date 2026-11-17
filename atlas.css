@@ -1,0 +1,94 @@
+/* Academic atlas: typography and layout, independent of learning data. */
+:root {
+  --header-height: 80px;
+  --atlas-nav-height: 72px;
+}
+.header { padding: 0 24px; gap: 16px; box-shadow: none; }
+.header-left { gap: 16px; }
+.brand-crest { width: 40px; height: 44px; box-shadow: none; background: transparent; color: var(--accent-text); }
+.brand-crest svg { width: 32px; height: 32px; }
+.brand-name { font-size: 20px; }
+.brand-name span { color: inherit; }
+.brand-sub { text-transform: none; letter-spacing: 0; }
+.header-nav { gap: 4px; }
+.nav-tab { gap: 8px; min-width: 44px; }
+.nav-tab svg { width: 18px; height: 18px; }
+.header-right { gap: 12px; }
+.state-switcher[hidden] { display: none; }
+.study-progress-card { background: transparent; border: 0; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 500; padding: 12px 16px; background: var(--surface); color: var(--accent-text); }
+.skip-link:focus { top: 8px; }
+.main-stage { padding: 32px; }
+.view-panel { max-width: 1280px; }
+.atlas-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
+.atlas-heading h1 { font-size: clamp(24px, 2.6vw, 36px); font-weight: 600; line-height: 1.2; }
+.atlas-heading p { color: var(--text-muted); max-width: 65ch; margin-top: 12px; }
+.atlas-format { flex: 0 0 auto; color: var(--text-muted); font-size: 14px; padding-bottom: 4px; }
+.atlas-toolbar { gap: 16px; padding: 16px 0 24px; background: transparent; border: 0; border-bottom: 1px solid var(--border); border-radius: 0; box-shadow: none; }
+.atlas-layers-title { font-family: var(--font-sans); font-size: 14px; letter-spacing: 0; text-transform: none; }
+.atlas-layer-pills { gap: 8px; }
+.layer-btn { border-radius: 6px; background: var(--surface); padding: 0 12px; }
+.layer-btn.active { box-shadow: none; }
+.atlas-canvas-card { grid-template-columns: minmax(0, 1fr) minmax(320px, 400px); padding: 0; gap: 24px; border: 0; background: transparent; box-shadow: none; align-items: stretch; }
+.atlas-svg-stage { min-height: 520px; border: 1px solid var(--border); background: var(--surface); }
+.atlas-svg-stage svg { max-height: 600px; }
+.organ-dossier-card { padding: 24px; background: var(--surface); border-radius: 10px; }
+.dossier-latin { font-size: 18px; margin-bottom: 12px; }
+.dossier-name { font-size: 24px; font-weight: 600; }
+.dossier-header { padding-bottom: 16px; margin-bottom: 16px; }
+.dossier-section-badge { margin-top: 16px; border: 0; border-radius: 4px; background: var(--surface-2); padding: 4px 8px; font-size: 14px; }
+.dossier-body { font-size: 16px; line-height: 1.6; }
+.dossier-clinical { background: var(--surface-2); padding: 12px; font-size: 14px; line-height: 1.6; }
+.dossier-action { margin-top: 24px; }
+.dossier-action .btn { white-space: normal; height: auto; min-height: 48px; padding: 12px; line-height: 1.5; box-shadow: none; }
+.q-card { padding: 32px; box-shadow: none; }
+.empty-state-desc, .error-state-desc { font-size: 16px; }
+.stat-metric-card { padding: 24px; box-shadow: none; text-align: left; }
+.stat-metric-label { font-size: 14px; }
+.stats-overview-grid { gap: 16px; margin-bottom: 32px; }
+.stats-sec-title-row { font-size: 16px; gap: 16px; }
+.q-answer, .q-answer-content { font-size: 16px; line-height: 1.6; }
+@media (max-width: 1100px) {
+  .header { padding-inline: 16px; gap: 8px; }
+  .study-progress-card, .atlas-format { display: none; }
+  .brand-name { font-size: 18px; }
+  .brand-sub { font-size: 12px; }
+  .nav-tab { padding-inline: 8px; }
+  .atlas-canvas-card { grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); gap: 16px; }
+}
+@media (max-width: 900px) {
+  .header { padding: 0 16px; }
+  .header-nav { position: fixed; bottom: 0; left: 0; right: 0; height: calc(var(--atlas-nav-height) + var(--safe-bottom)); padding: 8px 8px calc(8px + var(--safe-bottom)); background: var(--surface); border-top: 1px solid var(--border); justify-content: space-around; z-index: 220; }
+  .header-nav .nav-tab { flex: 1; height: 56px; flex-direction: column; justify-content: center; gap: 4px; padding: 4px; border-radius: 6px; font-size: 12px; }
+  .header-nav .nav-tab span { display: block; }
+  .nav-tab svg { width: 20px; height: 20px; }
+  .main-stage { bottom: calc(var(--atlas-nav-height) + var(--safe-bottom)); padding: 24px 16px 32px; }
+  .sidebar, .overlay-backdrop { bottom: calc(var(--atlas-nav-height) + var(--safe-bottom)); }
+  .atlas-canvas-card { grid-template-columns: minmax(0, 1fr); }
+  .atlas-heading { margin-bottom: 16px; }
+  .atlas-heading p { font-size: 16px; }
+  .atlas-toolbar { padding-bottom: 16px; }
+  .atlas-svg-stage { min-height: 360px; }
+  .atlas-svg-stage svg { max-height: 440px; }
+  .organ-dossier-card { padding: 24px; }
+  .state-switcher { position: fixed; top: var(--header-height); right: 8px; z-index: 230; background: var(--surface); }
+}
+@media (max-width: 420px) {
+  :root { --header-height: 72px; }
+  .header { padding-inline: 12px; }
+  .header-left { gap: 8px; }
+  .brand-badge { gap: 4px; }
+  .brand-crest { width: 24px; }
+  .brand-crest svg { width: 24px; }
+  .brand-name { font-size: 16px; }
+  .brand-sub { font-size: 12px; }
+  .header-right { gap: 0; }
+  .atlas-layer-pills { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+  .layer-btn { justify-content: center; padding-inline: 8px; min-width: 0; font-size: 12px; }
+  .layer-btn:first-child { grid-column: 1 / -1; }
+  .atlas-heading h1 { font-size: 24px; }
+  .organ-dossier-card, .q-card { padding: 16px; }
+  .dossier-name { font-size: 24px; }
+  .stats-overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat-metric-card { padding: 16px; }
+}
