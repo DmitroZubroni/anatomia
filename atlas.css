@@ -141,3 +141,38 @@ body.mode-tasks #panelQuestions { display: block; }
 }
 
 .header-nav .nav-tab .atlas-nav-icon { fill: none; stroke: currentColor; }
+
+/* The neutral anatomical outline locates each system without intercepting its controls. */
+.atlas-svg-stage {
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+}
+.atlas-body-reference { pointer-events: none; }
+.atlas-body-outline {
+  fill: color-mix(in srgb, var(--surface-3) 78%, var(--surface));
+  stroke: var(--text-dim);
+  stroke-width: 1.5;
+}
+.atlas-body-detail {
+  stroke: var(--text-muted);
+  stroke-width: 1.35;
+  opacity: .55;
+}
+#panelAtlas:has(#btnLayerCell.active) .atlas-body-reference { display: none; }
+.atlas-plate-caption {
+  color: var(--text-muted);
+  font-size: 14px;
+  text-align: center;
+  padding-block: 4px;
+}
+@media (max-width: 900px) {
+  .main-stage {
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scroll-padding-block: 16px 24px;
+  }
+  .header-nav { background-color: var(--surface); }
+  .header-nav .nav-tab { min-width: 0; }
+  .atlas-svg-stage { min-height: 0; }
+}

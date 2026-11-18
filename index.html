@@ -1542,6 +1542,11 @@ html, body {
                 <line x1="300" y1="30" x2="300" y2="670"/>
               </g>
 
+              <g class="atlas-body-reference" aria-hidden="true">
+                <path class="atlas-body-outline" d="M300 39 C275 39 261 58 263 82 Q259 78 260 91 Q262 102 269 104 Q275 116 283 121 L282 139 Q267 148 245 152 C224 154 213 165 207 191 L188 264 Q181 282 180 302 L165 358 Q161 373 151 390 L147 408 Q149 415 154 407 L161 393 L158 412 Q161 419 166 411 L175 390 L180 415 Q185 417 186 409 L186 390 Q189 378 189 365 L212 295 Q219 280 220 265 L241 205 Q246 240 247 259 Q245 281 238 312 Q230 342 233 379 Q236 403 225 454 L221 516 Q222 536 225 550 Q220 581 223 613 L223 648 Q221 661 213 668 Q206 681 222 683 L247 682 Q257 680 253 669 L250 646 Q255 611 256 575 Q258 555 253 539 L278 446 Q290 405 300 401 Q310 405 322 446 L347 539 Q342 555 344 575 Q345 611 350 646 L347 669 Q343 680 353 682 L378 683 Q394 681 387 668 Q379 661 377 648 L377 613 Q380 581 375 550 Q378 536 379 516 L375 454 Q364 403 367 379 Q370 342 362 312 Q355 281 353 259 Q354 240 359 205 L380 265 Q381 280 388 295 L411 365 Q411 378 414 390 L414 409 Q415 417 420 415 L425 390 L434 411 Q439 419 442 412 L439 393 L446 407 Q451 415 453 408 L449 390 Q439 373 435 358 L420 302 Q419 282 412 264 L393 191 C387 165 376 154 355 152 Q333 148 318 139 L317 121 Q325 116 331 104 Q338 102 340 91 Q341 78 337 82 C339 58 325 39 300 39Z"/>
+                <path class="atlas-body-detail" d="M283 122 Q300 134 317 122 M246 157 Q274 158 293 172 M354 157 Q326 158 307 172 M252 280 Q266 291 274 316 M348 280 Q334 291 326 316 M234 359 Q266 364 296 396 M366 359 Q334 364 304 396 M228 547 Q240 553 251 547 M349 547 Q360 553 372 547 M224 650 L249 650 M351 650 L376 650"/>
+              </g>
+
               <!-- СЛОЙ 1: СКЕЛЕТНАЯ СИСТЕМА (ОСТЕОЛОГИЯ) -->
               <g id="layer-skeleton" class="anat-layer">
                 <!-- Череп (Cranium) -->
@@ -1618,9 +1623,10 @@ html, body {
               <g id="layer-cardio" class="anat-layer">
                 <!-- Сердце (Cor / Миокард) -->
                 <g class="anat-node" data-organ="cor" onclick="selectOrgan('cor')" tabindex="0" role="button" aria-label="Изучить: Сердце" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('cor');}">
-                  <path d="M 300 200 C 300 185, 275 175, 265 195 C 255 215, 280 240, 300 260 C 320 240, 345 215, 335 195 C 325 175, 300 185, 300 200 Z"
+                  <path d="M 294 193 C 294 181 309 177 319 188 C 334 187 344 198 342 216 C 340 234 328 251 316 261 C 298 255 286 240 282 222 C 278 209 282 198 294 193 Z"
                     fill="url(#gradArtery)" stroke="#fff" stroke-width="1.5"/>
-                  <circle cx="300" cy="215" r="8" fill="#fff" opacity="0.3" class="anat-pulse-ring"/>
+                  <path d="M299 196 C293 212 307 233 316 250 M318 193 Q329 207 325 223" fill="none" stroke="#fca5a5" stroke-width="2" pointer-events="none"/>
+                  <circle cx="310" cy="215" r="8" fill="#fff" opacity="0.3" class="anat-pulse-ring"/>
                 </g>
                 <!-- Дуга аорты (Arcus aortae) -->
                 <path class="anat-node" data-organ="aorta" onclick="selectOrgan('aorta')" tabindex="0" role="button" aria-label="Изучить: Аорта" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();selectOrgan('aorta');}"
@@ -1706,10 +1712,9 @@ html, body {
                 </g>
               </g>
 
-              <text x="300" y="690" text-anchor="middle" fill="var(--text-dim)" font-size="14" font-family="var(--font-sans)">
-                ● НАЖМИТЕ НА ОРГАН ДЛЯ ИЗУЧЕНИЯ ДОСЬЕ И ВОПРОСОВ ●
-              </text>
+
             </svg>
+            <p class="atlas-plate-caption">Выберите орган на рисунке</p>
           </div>
 
           <!-- Академическое досье выбранного анатомического образования -->

@@ -58,7 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
       list.append(item);
     });
     const rect = trigger.getBoundingClientRect();
-    const bottomLimit = innerWidth <= 900 ? 80 : 16;
+    const nav = document.querySelector('.header-nav');
+    const bottomLimit = matchMedia('(max-width: 900px)').matches
+      ? innerHeight - nav.getBoundingClientRect().top + 8
+      : 16;
     const below = innerHeight - rect.bottom - bottomLimit;
     const above = rect.top - 16;
     const upwards = below < 220 && above > below;
